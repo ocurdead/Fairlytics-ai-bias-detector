@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8001";
+const API_BASE = "https://fairlytics.onrender.com";
 
 const datasetSection = document.getElementById("datasetSection");
 const modelSection = document.getElementById("modelSection");
