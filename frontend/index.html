@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fairlytics Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <p class="eyebrow">Fairness Intelligence</p>
+        <h1>Fairlytics Bias Detection Prototype</h1>
+        <p class="subtitle">
+          Upload a dataset or model. The system runs multi-agent bias checks, explains results in simple language, and suggests practical fixes.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Choose Input Mode</h2>
+        <div class="mode-picker">
+          <label><input type="radio" name="mode" value="dataset" checked /> Dataset (CSV)</label>
+          <label><input type="radio" name="mode" value="model" /> Model File</label>
+        </div>
+      </section>
+
+      <section class="card" id="datasetSection">
+        <h2>Dataset Audit</h2>
+        <form id="datasetForm">
+          <input type="file" id="datasetFile" accept=".csv" required />
+          <p class="field-note">Sensitive attribute is optional. Leave blank to auto-detect (for example: gender, race, age).</p>
+          <div class="grid">
+            <input type="text" id="protectedAttr" placeholder="Sensitive attribute (optional)" />
+            <input type="text" id="labelCol" placeholder="Label column (e.g. approved)" required />
+            <input type="text" id="favorableLabel" placeholder="Favorable label (e.g. yes)" required />
+          </div>
+          <button type="submit">Run Dataset Audit</button>
+        </form>
+      </section>
+
+      <section class="card hidden" id="previewCard">
+        <h2>Dataset Preview</h2>
+        <p id="previewMeta"></p>
+        <div class="table-wrap">
+          <table id="previewTable"></table>
+        </div>
+      </section>
+
+      <section class="card hidden" id="modelSection">
+        <h2>Model Review</h2>
+        <form id="modelForm">
+          <input type="file" id="modelFile" required />
+          <input type="text" id="modelName" placeholder="Model name" />
+          <textarea id="modelNotes" placeholder="Optional: model purpose, training notes, known constraints"></textarea>
+          <button type="submit">Run Model Review</button>
+        </form>
+      </section>
+
+      <section class="card hidden" id="loadingCard">
+        <p>Running agents and generating explanation...</p>
+      </section>
+
+      <section class="result-shell hidden" id="resultCard">
+        <header class="result-header">
+          <h2>Audit Result</h2>
+          <p>Fairness evaluation based on selected policy and detected attributes</p>
+        </header>
+
+        <section class="verdict-card" id="verdictCard">
+          <p class="verdict-status" id="verdictStatus">Fair (Low Risk)</p>
+          <p class="verdict-score" id="verdictScore">95 / 100</p>
+          <p class="verdict-meta" id="verdictMeta">Severity: Low</p>
+        </section>
+
+        <section class="result-card">
+          <h3>Explanation</h3>
+          <p id="explanationText">No explanation available.</p>
+        </section>
+
+        <section class="result-card evidence-card">
+          <h3>Evidence</h3>
+          <div id="evidenceGrid" class="evidence-grid"></div>
+          <p id="evidenceDifference" class="evidence-difference"></p>
+        </section>
+
+        <section class="result-card">
+          <h3>Fairness Metrics</h3>
+          <div id="metricsList" class="metrics-list"></div>
+        </section>
+
+        <section class="result-card">
+          <h3>Bias Attribution</h3>
+          <div class="attribution-row">
+            <span>Data Bias</span>
+            <div class="progress-track"><div id="dataBiasBar" class="progress-fill"></div></div>
+            <span id="dataBiasText">0%</span>
+          </div>
+          <div class="attribution-row">
+            <span>Model Bias</span>
+            <div class="progress-track"><div id="modelBiasBar" class="progress-fill"></div></div>
+            <span id="modelBiasText">0%</span>
+          </div>
+        </section>
+
+        <section class="result-card what-if-card">
+          <h3>Robustness Check</h3>
+          <p id="robustnessText">No robustness insight available.</p>
+        </section>
+
+        <section class="result-card">
+          <h3>Recommended Actions</h3>
+          <ul id="actionsList" class="actions-list"></ul>
+        </section>
+
+        <section class="decision-card">
+          <p class="decision-status" id="decisionStatus">SAFE TO DEPLOY</p>
+          <p class="decision-confidence" id="decisionConfidence">Confidence: 0%</p>
+          <p class="decision-columns" id="decisionColumns"></p>
+        </section>
+
+        <div class="result-actions">
+          <button type="button" class="btn-muted" id="backBtn">Back</button>
+          <div class="right-actions">
+            <button type="button" class="btn-primary" id="downloadBtn">Download Report</button>
+            <button type="button" class="btn-muted" id="shareBtn">Share</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+  </html>

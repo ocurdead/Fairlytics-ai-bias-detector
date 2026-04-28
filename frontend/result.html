@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fairlytics Audit Result</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="result-shell result-page-shell" id="resultCard">
+        <header class="result-header">
+          <h2>Audit Result</h2>
+          <p>Fairness evaluation based on selected policy and detected attributes</p>
+        </header>
+
+        <section class="verdict-card" id="verdictCard">
+          <p class="verdict-status" id="verdictStatus">Fair (Low Risk)</p>
+          <p class="verdict-score" id="verdictScore">95 / 100</p>
+          <p class="verdict-meta" id="verdictMeta">Severity: Low</p>
+        </section>
+
+        <section class="result-card">
+          <h3>Explanation</h3>
+          <p id="explanationText">No explanation available.</p>
+        </section>
+
+        <section class="result-card evidence-card">
+          <h3>Evidence</h3>
+          <div id="evidenceGrid" class="evidence-grid"></div>
+          <p id="evidenceDifference" class="evidence-difference"></p>
+        </section>
+
+        <section class="result-card">
+          <h3>Fairness Metrics</h3>
+          <div id="metricsList" class="metrics-list"></div>
+        </section>
+
+        <section class="result-card">
+          <h3>Bias Attribution</h3>
+          <div class="attribution-row">
+            <span>Data Bias</span>
+            <div class="progress-track"><div id="dataBiasBar" class="progress-fill"></div></div>
+            <span id="dataBiasText">Minimal</span>
+          </div>
+          <div class="attribution-row">
+            <span>Model Bias</span>
+            <div class="progress-track"><div id="modelBiasBar" class="progress-fill"></div></div>
+            <span id="modelBiasText">Minimal</span>
+          </div>
+        </section>
+
+        <section class="result-card what-if-card">
+          <h3>Robustness Check</h3>
+          <p id="robustnessText">No robustness insight available.</p>
+        </section>
+
+        <section class="result-card">
+          <h3>Recommended Actions</h3>
+          <ul id="actionsList" class="actions-list"></ul>
+        </section>
+
+        <section class="decision-card">
+          <p class="decision-status" id="decisionStatus">SAFE TO DEPLOY</p>
+          <p class="decision-confidence" id="decisionConfidence">Confidence: 0%</p>
+          <p class="decision-columns" id="decisionColumns"></p>
+        </section>
+
+        <div class="result-actions">
+          <button type="button" class="btn-muted" id="backBtn">Back</button>
+          <div class="right-actions">
+            <button type="button" class="btn-primary" id="downloadBtn">Download PDF Report</button>
+            <button type="button" class="btn-muted" id="shareBtn">Share</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="./result.js"></script>
+  </body>
+</html>
