@@ -141,16 +141,16 @@ GROQ_MODEL=llama-3.1-8b-instant
 
 ## ⚠️ Limitations
 
-Small datasets may skip model fairness checks
-Requires labeled data
-Binary outcomes work best
+1. Small datasets may skip model fairness checks
+2. Requires labeled data
+3. Binary outcomes work best
 
 ---
 
 ## 🏁 Future Improvements
 
-Real time llm output bias detection
-Dashboard analytics
-Multi-attribute fairness
-Real-time model monitoring
-Explainable AI visualizations
+1. Real-time llm output bias detection
+2. Dashboard analytics
+3. Multi-attribute fairness
+4. Real-time model monitoring
+5. Explainable AI visualizations
