@@ -31,7 +31,7 @@ It analyzes outcomes across demographic groups and highlights disparities using 
 
 ## 🏗️ Architecture
 
-
+```
 Frontend (Netlify)
 ↓
 FastAPI Backend (Render)
@@ -44,7 +44,7 @@ Agents:
 • Counterfactual Agent
 ↓
 Explanation Engine (Rule-based + Groq LLM)
-
+```
 
 ---
 
