@@ -65,8 +65,7 @@ Explanation Engine (Rule-based + Groq LLM)
 ---
 
 ## 📂 Project Structure
-
-
+```
 fairlytics/
 │
 ├── frontend/
@@ -89,7 +88,7 @@ fairlytics/
 ├── config.py
 ├── main.py
 └── requirements.txt
-
+```
 
 ---
 
