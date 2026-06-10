@@ -133,13 +133,17 @@ python -m http.server 5500
 Create .env file:
 
 GROQ_API_KEY=your_api_key
-GROQ_MODEL=llama-3.1-8b-instant
+GROQ_MODEL=llama-3.1-8b-instant```
+
 ---
+
 ## ⚠️ Limitations
 Small datasets may skip model fairness checks
 Requires labeled data
 Binary outcomes work best
+
 ---
+
 ## 🏁 Future Improvements
 Real time llm output bias detection
 Dashboard analytics
